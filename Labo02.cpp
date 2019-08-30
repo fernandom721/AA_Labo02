@@ -66,6 +66,8 @@ int main(){
     Pila Pilapar;
 
     int n;
+    int x=0;
+    int y=0;
     cout<<"agregue numeros (cero para terminar)"<<endl;
     while (n != 0)
     {
@@ -74,18 +76,28 @@ int main(){
         {
             Pilapar.push(n);
             Pilaimpar.pop();
-            
+            x++;
         }
         if(n%2 != 0 && n!=0)
         {
-            
             Pilaimpar.push(n);
             Pilapar.pop();
+            y++;
         }
         
     }
-    Pilapar.mostrarPila();
-    cout << endl;
-    Pilaimpar.mostrarPila();
+    //Pilapar.mostrarPila();
+    //cout << endl;
+    //Pilaimpar.mostrarPila();
+
+    if (y==x){
+        cout << "Tienen el mismo tamannio";
+    }
+    else
+    {
+        cout << "No tienen el mismo tamannio";
+    }
+    
+
     
 }

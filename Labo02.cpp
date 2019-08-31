@@ -44,26 +44,47 @@ class Pila{
             inicio=nullptr;
         }
 };
+class Pilan{
+    public:
+        Nodo* crearNodon(int valor){
+            Nodo *n= new Nodo;
+            n-> dato = valor;
+            n-> sig = nullptr;
+            return n;
+        }
 
-int llenarpar(int n){
-    Pila Pilapar;
-    Pilapar.push(n);
-    
-    //Pilapar.mostrarPila();
-    return 0;
-}
-int llenarimpar(int n){
-    Pila Pilaimpar;
-    Pilaimpar.push(n);
-
-    //Pilaimpar.mostrarPila();
-    return 0;
-}
+        void pushn(int valor){
+            Nodo *n= crearNodon(valor);
+            n-> sig = inicio;
+            inicio=n;
+        }
+        void popn(){
+            Nodo *temp = inicio;
+            inicio = inicio -> sig;
+            free(temp);
+        }
+        void mostrarPilan(){
+            Nodo *temp = inicio;
+            if(!inicio){
+                cout << "Pila Vacia"<<endl;
+            }
+            else
+            {
+                while (temp){
+                    cout << temp -> dato << ", ";
+                    temp = temp -> sig;
+                }
+            }
+        }
+        Pilan(){
+            inicio=nullptr;
+        }
+};
 
 int main(){
 
     Pila Pilaimpar;
-    Pila Pilapar;
+    Pilan Pilapar;
 
     int n;
     int x=0;
@@ -74,21 +95,18 @@ int main(){
         cin>>n;
         if(n % 2 ==0 && n!=0)
         {
-            Pilapar.push(n);
-            Pilaimpar.pop();
+            Pilapar.pushn(n);
             x++;
         }
         if(n%2 != 0 && n!=0)
         {
             Pilaimpar.push(n);
-            Pilapar.pop();
             y++;
         }
-        
     }
-    //Pilapar.mostrarPila();
-    //cout << endl;
-    //Pilaimpar.mostrarPila();
+    Pilapar.mostrarPilan();
+    cout << endl;
+    Pilaimpar.mostrarPila();
 
     if (y==x){
         cout << "Tienen el mismo tamannio";
@@ -97,7 +115,4 @@ int main(){
     {
         cout << "No tienen el mismo tamannio";
     }
-    
-
-    
 }
